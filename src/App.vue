@@ -135,7 +135,7 @@
             </tr>
           </tbody>
         </table>
-        <p class="in-t">国外疫情</p>
+        <p class="in-t itopend">国外疫情</p>
         <ul class="indata ovf">
           <li>
             <p class="indata-t">现有确诊</p>
@@ -284,9 +284,12 @@ export default {
         window.pageYOffset ||
         document.documentElement.scrollTop ||
         document.body.scrollTop;
-      if (scrollTop > 1767 && scrollTop < 3338) {
+      var itop = document.querySelector(".inlist").offsetTop;
+      var itopend =  document.querySelector(".itopend").offsetTop;
+      var inlisto = document.querySelector(".inlist-o").offsetTop;
+      if (scrollTop > itop && scrollTop < itopend) {
         this.fixc = true;
-      } else if (scrollTop > 3970) {
+      } else if (scrollTop > inlisto) {
         this.fixc = true;
       } else {
         this.fixc = false;
