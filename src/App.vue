@@ -1,6 +1,9 @@
 <template>
   <div id="app">
-    <div v-if="status">
+    <div v-if="!status" class="dataview">
+      <img src="./assets/imgs/loading.gif" />
+    </div>
+    <div v-else>
       <div class="fixc" v-show="fixc">
         <div>
           <p>疫情地区</p>
@@ -236,9 +239,6 @@
           </table>
         </div>
       </mu-dialog>
-    </div>
-    <div v-else class="dataview">
-      <img src="./assets/imgs/loading.gif" />
     </div>
   </div>
 </template>
