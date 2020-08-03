@@ -12,6 +12,7 @@
     "echarts": "^4.8.0",
     "lib-flexible": "^0.3.2",
     "muse-ui": "^3.0.2",
+    "muse-ui-loading": "^0.2.0",
     "vue": "^2.6.11"
   },
   "devDependencies": {

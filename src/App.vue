@@ -1,8 +1,6 @@
 <template>
   <div id="app">
-    <div v-if="!status" class="dataview">
-      <img src="./assets/imgs/loading.gif" />
-    </div>
+    <div v-loading="status" v-if="status"  data-mu-loading-overlay-color="rgba(0, 0, 0, .6)"></div>
     <div v-else>
       <div class="fixc" v-show="fixc">
         <div>
@@ -256,7 +254,7 @@ export default {
       caseOutsideList: [], //国外
       subs: [],
       areatit: "",
-      status: false,
+      status: true,
       fixc: false,
       openFullscreen: false,
       list: [],
@@ -683,11 +681,12 @@ export default {
   },
   filters: {
     msgFormat: (myMsg) => {
+      console.log(myMsg)
       return myMsg.indexOf("-") != -1 ? myMsg : "+" + myMsg;
     },
   },
   mounted() {
-    this.status = false;
+    this.status = true;
     fetch("https://www.maomin.club/fy/get", {
       method: "GET",
       headers: {
@@ -700,7 +699,6 @@ export default {
         var madeData = made.component;
         var data = madeData[0];
         this.dataObj = data;
-        this.status = true;
         this.summaryDataIn = data.summaryDataIn;
         this.summaryDataOut = data.summaryDataOut;
         this.caseList = data.caseList;
@@ -708,6 +706,7 @@ export default {
         this.asymptomaticTopProvince = data.asymptomaticTopProvince;
         this.newAddTopProvince = data.newAddTopProvince;
         this.topAddCountry = data.topAddCountry;
+        this.status = false;
       })
       .then(() => {
         this.echarts();
